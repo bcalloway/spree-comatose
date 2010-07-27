@@ -1,0 +1,22 @@
+- if request.request_uri == "/bands" || request.request_uri == "/brewers"
+  %h1
+    = request.request_uri.gsub(/\//, "").capitalize
+
+  - if !@page.children.empty?
+    %ul.list
+      - @page.children.each do |page|
+        - if page.state == "approved" 
+          %li
+            = link_to page.title, page.full_path
+  - else
+    = "Stay tuned for the full #{Time.now.strftime('%Y')} lineup."
+
+- else          
+  - cache("#{@page.full_path.gsub(/\//, '+')}") do
+
+    - unless request.request_uri == "/" || !request.request_uri.match(/bands/).nil? || !request.request_uri.match(/brewers/).nil?
+      %h1
+        = @page.title
+
+    #page-body
+      = @page.body

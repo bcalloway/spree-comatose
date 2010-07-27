@@ -1,0 +1,389 @@
+body
+  :background #DDD
+  :margin 0px 100px
+  :padding 0px
+  :font-family "Lucida Grande", Tahoma, Verdana, Arial, Sans-Serif
+  :font-size 12px
+  :min-width 450px
+
+#page-container
+  :margin 0px
+  :padding 0px
+
+#header
+  :background #0053C2
+  :padding 5px
+  :border-bottom 2px solid #000
+
+  a
+    :text-decoration none
+    :color white
+
+    &:hover
+      :color white
+
+  h1
+    :margin 0px
+    :padding 0px
+    :padding-left 10px
+
+  h5
+    :margin 0px
+    :padding 0px
+    :padding-left 15px
+    :color silver
+
+  #flash
+    :float right
+    :color #4BA8FF
+    :font-weight bold
+    :margin-right 5px
+
+
+#content
+  :padding 15px
+  :background white
+  :border-left 1px solid silver
+  :border-right 1px solid silver
+
+  h1
+    :margin 0px
+    :padding 0px
+    :font-size 135%
+    :color gray
+
+  .action
+    :float right
+    :color gray
+
+    a
+      :font-weight bold
+      :text-decoration none
+      :color navy
+      :border-bottom 1px solid blue
+      :margin-left 15px
+
+      &:hover
+        :color red
+        :border-bottom 1px solid red
+
+  .page-header
+    :color gray
+
+
+#import_form
+  :position fixed
+  :right 75px
+  :border 3px solid gray !important
+  :-webkit-border-radius 10px
+  :-moz-border-radius 10px
+  :background #FFF
+  :padding 15px
+
+  form
+    :display inline
+    :margin 0px
+    :padding 0px
+
+  a
+    :color maroon !important
+    :border-bottom 1px solid gray !important
+
+    &:hover
+      :color red !important
+      :border-bottom 1px solid red !important
+
+
+#content
+  .tree-controller
+    :border 0px
+    :cursor pointer
+
+  .page-list
+    :background white
+    :clear both
+    :list-style none
+    :border-left 0px dotted silver
+    :margin 0px
+    :padding 0px
+    :padding-left 40px
+    :margin-top 2px
+
+    &.root
+      :clear both
+      :list-style none
+      :margin 0px
+      :padding 0px
+      :margin-top 10px
+
+    &.collapsed
+      :display none
+
+    li
+      :clear both
+      :padding 0px
+      :margin 5px 0px
+      :padding-top 2px
+      :padding-right 0px
+      :padding-left 2px
+
+    .commands
+      :font-size 90%
+      :padding-left 5px
+      :color silver
+
+      a
+        :color gray
+
+        &.add-pagehover
+          :color blue
+
+        &.reorder-childrenhover
+          :color black
+
+        &.delete-pagehover
+          :color white
+
+        &.reordering
+          :background navy
+          :color white
+
+          &:hover
+            :color white
+
+    a.page
+      :text-decoration none
+      :color black
+      :margin-left 3px
+      :font-size 150%
+      :display block
+
+      &:hover
+        :background white url(../images/comatose/title-hover-bg.gif) top left repeat-y
+
+  .handle, .do-reorder ul li .handle
+    :display none
+
+  .page-list
+    .hover
+      :background #F1F0DB
+
+    .hover-delete
+      :background red
+      :color #FF8E90
+
+      a, .commands a
+        :color #FF8E90
+
+      a.page
+        :color white
+        :border-bottom 0px
+
+      ul li a.page
+        :color red
+        :border-bottom 0px
+
+  .do-reorder li .handle
+    :display inline
+    :background gray
+    :color white
+    :padding 1px 3px
+    :cursor move
+
+  .page-list .do-reorder .commands A
+    :display none
+
+  .page-form
+    :margin-top 10px
+
+    label
+      :font-weight bold
+      :color #555
+
+    .meta-info label
+      :color #999 !important
+
+    .label
+      :padding-top 5px
+      :width 75px
+      :text-align right
+      :padding-right 10px
+
+      &.body
+        :vertical-align top
+        :padding-top 10px
+
+    .field
+      :padding-top 5px
+
+    .field-help
+      :color gray
+
+    #page_title
+      :font-size 125%
+      :font-weight bold
+
+    #page_slug
+      :color gray
+
+    #page_body
+      :font-family monospace
+      :font-size 110%
+
+  #button-group
+    :padding 10px
+    :text-align right
+    :background-color #EAEAEA
+    :margin-top 10px
+
+    .last-update
+      :float left
+      :color gray
+      :padding-top 4px
+      :font-weight bold
+
+      label
+        :font-weight normal
+
+      a
+        :color gray
+
+    a
+      :color maroon
+
+      &:hover
+        :color red
+
+  #preview-area
+    :margin-top 10px
+
+    fieldset
+      :border 1px solid silver
+
+    legend
+      :font-size 125%
+
+    .preview-body
+      :padding 10px
+
+    .preview-note
+      :background #FFFFD9
+      :padding 15px
+
+    .commands
+      :text-align right
+      :color gray
+
+      a
+        :color gray
+
+        &:hover
+          :color black
+
+  .revisions
+    :padding 10px
+    :width 49%
+
+  .current-content
+  .older-content
+    :background #E9E9E9
+    :float right
+
+  .revisions
+    label
+      :display block
+      :color #000
+
+      span
+        :color #999
+        :font-weight normal !important
+
+    .title
+      :font-weight bold
+      :margin-top 5px
+
+    .header
+      :font-size 110%
+      :vertical-align middle
+      :font-weight bold
+
+    .header-actions
+      :float right
+      :font-size 90%
+      :font-weight normal
+      :color #999
+
+    .meta
+      :margin-bottom 15px
+
+    .footer
+      :margin-top 25px !important
+      :text-align center !important
+
+  #go-btn
+    :display none
+
+
+#errorExplanation
+  :border 1px solid red
+  :background #FFEAEB
+  :padding 10px
+  :margin-top 10px
+
+  h2
+    :margin 0px
+    :padding 0px
+    :color maroon
+
+  p
+    :margin 0px
+    :padding 0px
+    :padding-top 5px
+    :padding-left 15px
+
+  ul
+    :margin 0px
+    :padding 0px
+    :padding-left 35px
+
+  li
+    :margin 0px
+    :padding 0px
+    :padding-top 5px
+
+
+#footer
+  :border-top 4px solid #AAA
+  :text-align center
+  :font-size 90%
+  :color #AAA
+  :padding-top 5px
+  :padding-bottom 5px
+
+  a
+    :color #AAA
+    :text-decoration none
+    :font-weight bold
+
+    &:hover
+      :color #333
+      :text-decoration underline
+
+
+.noscript
+  #more-options, #preview-area, #preview-btn, .tree-controller
+    :display none
+
+  .page-list.collapsed
+    :display block !important
+
+  .delete-pagehover
+    :color red !important
+
+  #content
+    .page-form
+      #page_title, #page_slug, #page_parent, #page_keywords, #page_body
+        :width 100% !important
+
+    .revisions #go-btn
+      :display inline

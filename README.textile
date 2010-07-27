@@ -1,0 +1,86 @@
+h1. Spree Comatose CMS
+
+*Note:*
+AASM and Role-based authorization are not currently implemented in this fork, however the database columns are present if you would like to use those systems.  For an example application currently using this, check out "http://github.com/scullygroup/scully-rails-template":http://github.com/scullygroup/scully-rails-template
+
+Also, there are a few custom options included that can be specified in the <code>comatose_config.rb</code> initializer located in <code>config/initializers</code>.  Options include allow/disallow delete, allow/disallow add child, allow/disallow reordering, etc.
+
+h3. Documentation
+
+Spree-Comatose is a Spree Commerce Extension of the popular Comatose plugin.
+
+It's intended for simple CMS support:
+* Nested pages
+* Versioning
+* Page markup in Textile, Markdown, RDoc, or easily add your own
+* Page processing through Liquid or ERb
+* Engines Ready for easy installation/migration
+* Completely self-contained within plugin folder
+
+*Requirements:*
+* Spree
+* The engines plugin for Rails 2.3.4
+
+This plugin includes the following plugins in "engine_plugins", and they are git submodules.
+
+  * acts_as_list
+  * acts_as_tree
+  * pagnating_find
+  * respond_to_parent
+
+You may have to remove them if they conflict with other versions that you are using.
+
+h3. Getting ComatoseEngine Running
+
+# Install the engines plugin:
+  <pre><code>
+  $ script/plugin install git://github.com/lazyatom/engines.git
+  </code></pre>
+# Put the comatose engine plugin into plugins directory (use one of the following methods): 
+  ** If you're not using git, and just want to add the source files:
+    <pre><code>
+    Download a tarball from https://github.com/bcalloway/comatose-engine/tarball/master and unpack it into /vendor/plugins/comatose\_engine
+    </code></pre>
+    ** Using git, make a shallow clone of the comatose_engine repository:
+      <pre><code>
+      $ git clone --depth 1 git://github.com/bcalloway/comatose-engine.git vendor/plugins/comatose_engine
+      </code></pre>
+    ** If you want to keep your comatose_engine plugin up to date using git, you'll have to add it as a submodule       ("http://www.kernel.org/pub/software/scm/git/docs/user-manual.html#submodules":http://www.kernel.org/pub/software/scm/git/docs/user-manual.html#submodules)
+      <pre><code>
+      git submodule add git://github.com/bcalloway/comatose-engine.git vendor/plugins/comatose_engine
+      git submodule init
+      git submodule update
+      </code></pre>
+    ** Make sure you rename your CE directory to `comatose_engine` (note the underscore) if it isn't named that for some reason
+# Create your database and modify your `config/database.yml` appropriately.
+# Modify your environment.rb as indicated below:
+  <pre><code>
+    #
+    require File.join(File.dirname(__FILE__), 'boot')
+    require File.join(File.dirname(__FILE__), '../vendor/plugins/engines/boot')
+    #
+    Spree::Initializer.run do |config|
+      config.plugins = [:engines, :comatose_engine, :all]
+      config.plugin_paths += ["#{RAILS_ROOT}/vendor/plugins/comatose_engine/engine_plugins"]
+      config.extensions = [:comatose_cms, :all]
+      ... Your stuff here ...
+    end
+    #
+  </code></pre>
+# Generate the comatose engine migrations:
+  <pre><code>
+  $ script/generate plugin_migration
+  </code></pre>
+# From the command line:
+  <pre><code>
+  $ rake db:migrate
+  </code></pre>
+
+h3. Optional Configuration
+
+Please take a look at the template used to generate sample Rails app here: "http://github.com/scullygroup/scully-rails-template":http://github.com/scullygroup/scully-rails-template
+
+Here is the comatose-engine plugin that this extension is based on: "http://github.com/bcalloway/comatose-engine":http://github.com/bcalloway/comatose-engine
+
+
+*Spree-Comatose and Comatose Engine are released under the MIT license.*

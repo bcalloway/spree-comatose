@@ -1,0 +1,7 @@
+%span{ :class => "#{obj.state}" }
+  = "#{obj.state}".upcase
+  
+- if role_call.include?("admin") || role_call.include?("publisher")
+  = link_to "Approve", admin_approve_page_path(obj)
+  |
+  = link_to "Deny", admin_deny_page_path(obj)
